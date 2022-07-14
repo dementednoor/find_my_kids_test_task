@@ -15,7 +15,7 @@
 
 Как это работает:
 запуск:
-  `python main.py --db-dir '{/home/user/directory_with_db_file}' --json-file '{events.json}' --first-run`
+`python main.py --db-dir '{/home/user/directory_with_db_file}' --json-file '{events.json}' --first-run`
 `--db-dir` - директория с файлом с базой данных
 `--json-file` - файл со списком событий, в данном примере их 2 - один валидный, второй нет
 `--first-run` - флаг, на случай если это первый запуск и таблиц в базе никаких нет
