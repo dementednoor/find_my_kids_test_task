@@ -9,6 +9,10 @@ import sys
 logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
 
 
+"""
+DataBaseHadnler class stores the connector to the database and high-level functions for implementing classic CRUD queries in SQLite
+... (except the Update one as we don't need it here). 
+"""
 class DataBaseHandler:
     def __init__(self, db_name):
         self.connection = sqlite3.connect(db_name)
@@ -55,6 +59,13 @@ class DataBaseHandler:
             print(row)
 
 
+"""
+EventRow is initialized from the single element of JSON and has fields which are listed in the __init__ function.
+Once we init our EventRow instance, we consider from the very beginning that all the data inside is valid and
+...we change that flag only if our validate function returns False.
+Validate function is currently pretty much raw as it explores the most obvious cases of potentially invalid data.
+Once we know more about the data that should be stored in the database, the number of cases that should be payed attention to on will grow.
+"""
 class EventRow:
     def __init__(self, serialized_event):
         self.event_id_ = serialized_event['event_id']
@@ -118,7 +129,7 @@ if __name__ == '__main__':
         action='store',
         dest='db_dir',
         required=True,
-        help='path to the file of the database'
+        help='path to the directory with the file of the database'
     )
 
     argument_parser.add_argument(
